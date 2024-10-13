@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        div{
+            width: 40%;
+            height: 100%;
+            justify-content: center;
+            text-align: center;
+        }
+        form, label, input {
+            margin: 5px auto;
+        }
+        input{
+            padding: 5px;
+        }
+    </style>
+</head>
+<body>
+  <div>
+    <h2> Calculate your BMI (Body Mass Index) </h2>
+
+    <form id="myform">
+
+        <label for="weight">Adult and child BMI </label>
+        <select name="age" id="age-group">
+            <option value="age 2-19">Age 2-19</option>
+            <option value="20-40">Age 20 - 40</option>
+        </select> <br>
+        <label for="weight">Weight (kg)</label> 
+        <input type="text" id="weight" placeholder="Enter weight in kg"> <br>
+
+        <label for="height">Height (m)</label> 
+        <input type="text" id="height" placeholder="Enter height in meters"> <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div class="display" id="result"></div>
+  </div>
+
+  <script>
+    // Select the form and add an event listener for form submission
+    document.getElementById('myform').addEventListener('submit', function(event){
+      // Prevent form from reloading the page
+      event.preventDefault();
+
+      // Get values of weight and height
+      let weight = document.getElementById('weight').value;
+      let height = document.getElementById('height').value;
+
+      // Calculate BMI if weight and height are valid numbers
+        let bmi = weight / (height * height);
+
+        // Display the BMI result
+        document.getElementById('result').innerHTML = `Your BMI is: ${bmi.toFixed(2)}`;
+    
+    });
+  </script>
+</body>
+</html> 
